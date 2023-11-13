@@ -48,7 +48,6 @@ public class Circle extends JPanel {
         if (VISION == true) {
             g.setColor(color);
             g.drawOval(O.GetX()-D/2, O.GetY()-D/2, D, D);
-
         }
     }
 }

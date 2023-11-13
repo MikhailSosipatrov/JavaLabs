@@ -13,6 +13,7 @@ import java.awt.*;
         private JButton ButRectangle = new JButton("Прямоугольник");
         private JButton ButTriangle = new JButton("Треугольник");
         private JButton ButRing = new JButton("Кольцо");
+        private JButton ButPicture = new JButton("Картинка");
         private JButton ButCreate = new JButton("Создать");
         private JButton ButRemove = new JButton("Переместить");
         private JButton ButDelete = new JButton("Удалить");
@@ -33,9 +34,10 @@ import java.awt.*;
         private Triangle [] triangles = null;
         private Ring ring = null;
         private Ring [] rings = null;
+        private Picture picture = null;
         private int ch1, ch2, ch3, ch4, ch5, ch6= 0;
         private String PressedBut;
-        private boolean VISION = false, VISION2 = false, VISION3 = false, VISION4 = false, VISION5 = false;
+        private boolean VISION = false, VISION2 = false, VISION3 = false, VISION4 = false, VISION5 = false, VISION6 = false;
 
         //Поле для рисования и панель с кнопками
         private Canvas() {
@@ -63,19 +65,21 @@ import java.awt.*;
             p.add(ButRectangle);
             p.add(ButTriangle);
             p.add(ButRing);
+            p.add(ButPicture);
 
 
 
 
             //"Back" button
             ButBack.addActionListener(e -> {
-                if (PressedBut.equals("PressedLine") || PressedBut.equals("PressedCircle") || PressedBut.equals("PressedRectangle") || PressedBut.equals("PressedTriangle") || PressedBut.equals("PressedRing")) {
+                if (PressedBut.equals("PressedLine") || PressedBut.equals("PressedCircle") || PressedBut.equals("PressedRectangle") || PressedBut.equals("PressedTriangle") || PressedBut.equals("PressedRing") || PressedBut.equals("PressedPicture")) {
                     SP.removeAll();
                     SP.add(ButLine);
                     SP.add(ButCircle);
                     SP.add(ButRectangle);
                     SP.add(ButTriangle);
                     SP.add(ButRing);
+                    SP.add(ButPicture);
                 }
                 if (PressedBut.equals("PressedArrayLines") || PressedBut.equals("PressedArrayCircles") || PressedBut.equals("PressedArrayRectangles") || PressedBut.equals("PressedArrayTriangles") || PressedBut.equals("PressedArrayRings")) {
 
@@ -118,6 +122,17 @@ import java.awt.*;
                 SP.revalidate();
                 SP.repaint();
                 PressedBut = "PressedRing";
+            });
+
+            ButPicture.addActionListener(e -> {
+                SP.removeAll();
+                SP.add(ButBack);
+                SP.add(ButCreate);
+                SP.add(ButRemove);
+                SP.add(ButDelete);
+                SP.revalidate();
+                SP.repaint();
+                PressedBut = "PressedPicture";
             });
 
             ButCircle.addActionListener(e -> {
@@ -395,6 +410,22 @@ import java.awt.*;
                     }
                 }
 
+                else if (PressedBut.equals("PressedPicture")) {
+                    if (picture == null) {
+                        VISION6 = true;
+                        picture = new Picture (ch1, ch2, ch3, ch4);
+                        (picture).Show(VISION6);
+                        CP.add(picture, BorderLayout.CENTER);
+                        CP.revalidate();
+                    } else {
+                        picture.Show(false);
+                        CP.remove(picture);
+                        picture = new Picture (ch1, ch2, ch3, ch4);
+                        ( picture).Show(VISION6);
+                        CP.add(picture, BorderLayout.CENTER);
+                        CP.revalidate();
+                    }
+                }
 
                 else if (PressedBut.equals("PressedTriangle")) {
                     if (triangle == null) {
@@ -607,7 +638,16 @@ import java.awt.*;
 
 
 
-
+                else if (PressedBut.equals("PressedPicture")) {
+                    if (picture != null) {
+                        ( picture).MoveTo(ch1, ch2);
+                        ( picture).Show(VISION6);
+                        CP.repaint();
+                    }
+                    else {
+                        JOptionPane.showMessageDialog(f, "Картинка не найдена");
+                    }
+                }
 
 
                 else if (PressedBut.equals("PressedTriangle")) {
@@ -804,6 +844,18 @@ import java.awt.*;
 
 
 
+                else if (PressedBut.equals("PressedPicture")) {
+                    if (picture != null && VISION6!=false) {
+                        CP.remove(picture);
+                        ( picture).Show(false);
+                        picture = null;
+                        CP.revalidate();
+                        CP.repaint();
+                    }
+                    else {
+                        JOptionPane.showMessageDialog(f, "Картинка не найдена");
+                    }
+                }
 
 
 
@@ -933,7 +985,7 @@ import java.awt.*;
                         CP.revalidate();
                         CP.repaint();
                     } else {
-                        JOptionPane.showMessageDialog(f, "Кольцо не найдена");
+                        JOptionPane.showMessageDialog(f, "Кольцо не найдено");
                     }
                 }
 

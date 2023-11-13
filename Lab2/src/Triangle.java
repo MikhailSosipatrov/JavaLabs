@@ -2,57 +2,55 @@ import javax.swing.*;
 import java.awt.*;
 
 public class Triangle extends JPanel {
-    private int x1, x2, x3, y1, y2, y3;
+
+    private Point A = new Point();
+    private Point B = new Point();
+    private Point C = new Point();
     private Color color;
     private boolean VISION = true;
 
-    public Triangle (int c1, int c2, int c3, int c4, int c5, int c6, Color c) {
+
+    public Triangle (int x1, int x2, int x3, int y1, int y2, int y3, Color c) {
         setLayout(null);
         setOpaque(false);
-        x1 = c1;
-        x2 = c2;
-        x3 = c3;
-        y1 = c4;
-        y2 = c5;
-        y3 = c6;
+        A.Set(x1,y1);
+        B.Set(x2,y2);
+        C.Set(x3,y3);
         color = c;
     }
 
+    public Triangle (int x1, int x2, int x3, int y1, int y2, int y3) {
+        setLayout(null);
+        setOpaque(false);
+        A.Set(x1,y1);
+        B.Set(x2,y2);
+        C.Set(x3,y3);
+        color= Color.BLACK;
+    }
 
-    public void MoveTo(int c1, int c2) {
-        x1 += c1;
-        x2 += c1;
-        x3 += c1;
-        y1 += c2;
-        y2 += c2;
-        y3 += c2;
-
+    public void MoveTo(int dx, int dy) {
+        A.Set(A.GetX()+dx,A.GetY()+dy);
+        B.Set(B.GetX()+dx,B.GetY()+dy);
+        C.Set(C.GetX()+dx,C.GetY()+dy);
     }
 
     public void Show(boolean VISION) {
         this.VISION= VISION;
-        if (this.VISION == false) this.color = Color.WHITE;
+        setVisible(this.VISION);
         this.VISION = true;
         this.repaint();
     }
 
-    public void chSize(int c1, int c2) {
-        x1 -= c1;
-        x3 += c1;
-        y1 -= c2;
-        y3 -=c2;
+    public void chSize(int dx, int dy) {
+        C.Set(C.GetX()+dx,C.GetY()+dy);
     }
-
 
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         if (VISION == true) {
             g.setColor(color);
-            g.drawPolygon(new int[] {x1, x2, x3}, new int[] {y1, y2, y3},3);
+            g.drawPolygon(new int[] {A.GetX(),B.GetX(),C.GetX()}, new int[] {A.GetY(),B.GetY(),C.GetY()}, 3);
         }
     }
 
 }
-
-
-

@@ -11,7 +11,7 @@ public class Rectangle extends JPanel {
     public Rectangle (int x, int y, int w, int h, Color c) {
         setLayout(null);
         setOpaque(false);
-        if ((x+w) >= 9000) { w = 900 - x;}
+        if ((x+w) >= 900) { w = 900 - x;}
         if ((y+h) >= 400) { h = 400 - y;}
         O.Set(x,y);
         this.w = w;
