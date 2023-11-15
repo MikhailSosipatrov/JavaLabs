@@ -3,15 +3,15 @@ import java.awt.*;
 
 public class Canvas {
 
-    private JFrame f = new JFrame("Лабораторная работа №3");
+    private JFrame f = new JFrame();
 
     private JButton ButBack = new JButton("Назад");
     private JButton ButCircles = new JButton("Окружности");
-    private JButton ButQuadrilaterals = new JButton("Четырехугольники");
+    private JButton ButQuadrangles = new JButton("Четырехугольники");
     private JButton ButCircle = new JButton("Окружность");
     private JButton ButEllipse = new JButton("Эллипс");
-    private JButton ButQuadrilateral = new JButton("Четырехугольник");
-    private JButton ButRectangular = new JButton("Прямоугольник");
+    private JButton ButQuadrangle = new JButton("Четырехугольник");
+    private JButton ButRectangle = new JButton("Прямоугольник");
     private JButton ButRhombus = new JButton("Ромб");
     private JButton ButTrapeze = new JButton("Трапециия");
     private JButton ButCreate = new JButton("Создать");
@@ -22,8 +22,8 @@ public class Canvas {
     private JButton ButChangeSize = new JButton("Изменить размер");
     private JButton ButArray = new JButton("Массив");
 
-    private JPanel cP = centerPanel();
-    private JPanel sP = southPanel();
+    private JPanel CP = CenterPanel();
+    private JPanel SP = SouthPanel();
     private JPanel circle = null;
     private TCircle [] circles = null;
     private JPanel ellipse = null;
@@ -37,199 +37,197 @@ public class Canvas {
     private String PressedFigureType, PressedFigure = ""; 
     private boolean VISION1 = true, VISION2 = true, VISION3 = true, VISION4 = true, VISION5 = true, VISION6 = true;
 
-    private Canvas() {                                   //создаем основное окно
+    private Canvas() {
         f.setLayout(new BorderLayout());
         f.setSize(1280,680);
-        f.add(cP, BorderLayout.CENTER);
-        f.add(sP, BorderLayout.SOUTH);
+        f.add(CP, BorderLayout.CENTER);
+        f.add(SP, BorderLayout.EAST);
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         f.setVisible(true);
     }
-
-    //панель с рисунками
-    private JPanel centerPanel () {
+    private JPanel CenterPanel () {
         JPanel p = new JPanel();
         p.setLayout(new BorderLayout());
-        p.setBackground(Color.white);
+        p.setBackground(Color.WHITE);
         return p;
     }
 
-    //панель с кнопками
-    private JPanel southPanel () {
+
+    private JPanel SouthPanel () {
         JPanel p = new JPanel();
-        p.setLayout(new FlowLayout());
-        p.setBackground(Color.GRAY);
+        p.setLayout(new GridLayout(5, 1, 10, 10));
+        p.setBackground(Color.BLUE);
         p.add(ButCircles);
-        p.add(ButQuadrilaterals);
+        p.add(ButQuadrangles);
 
         //кнопка "Назад"
         ButBack.addActionListener(e -> {
-            sP.removeAll();
+            SP.removeAll();
             if (PressedFigureType.equals("PressedCirclesOrRectangles")) {
-                sP.add(ButCircles);
-                sP.add(ButQuadrilaterals);
+                SP.add(ButCircles);
+                SP.add(ButQuadrangles);
                 PressedFigureType = "NoFigureType";
             }
             if (PressedFigureType.equals("PressedCircles")) {
-                sP.add(ButBack);
-                sP.add(ButCircle);
-                sP.add(ButEllipse);
+                SP.add(ButBack);
+                SP.add(ButCircle);
+                SP.add(ButEllipse);
                 PressedFigureType = "PressedCirclesOrRectangles";
             }
             if (PressedFigureType.equals("PressedRectangles")) {
-                sP.add(ButBack);
-                sP.add(ButQuadrilateral);
-                sP.add(ButRectangular);
-                sP.add(ButRhombus);
-                sP.add(ButTrapeze);
+                SP.add(ButBack);
+                SP.add(ButQuadrangle);
+                SP.add(ButRectangle);
+                SP.add(ButRhombus);
+                SP.add(ButTrapeze);
                 PressedFigureType = "PressedCirclesOrRectangles";
             }
             /*if (numbut2 == 21) {
-                sP.add(ButBack);
-                sP.add(ButCreate);
-                sP.add(ButRemove);
-                sP.add(ButDelete);
-                sP.add(ButChangeRadius);
-                sP.add(ButArray);
+                SP.add(ButBack);
+                SP.add(ButCreate);
+                SP.add(ButRemove);
+                SP.add(ButDelete);
+                SP.add(ButChangeRadius);
+                SP.add(ButArray);
                 PressedFigure = "PressedCircle";
                 PressedFigureType = "PressedCircles";
             }
             if (numbut2 == 24) {
-                sP.add(ButBack);
-                sP.add(ButCreate);
-                sP.add(ButRemove);
-                sP.add(ButDelete);
-                sP.add(ButChangeSize);
-                sP.add(ButArray);
-                PressedFigure = "PressedRectangular";
+                SP.add(ButBack);
+                SP.add(ButCreate);
+                SP.add(ButRemove);
+                SP.add(ButDelete);
+                SP.add(ButChangeSize);
+                SP.add(ButArray);
+                PressedFigure = "PressedRectangle";
                 PressedFigureType = "PressedRectangles";
             }
             */
 
-            sP.revalidate();
-            sP.repaint();
+            SP.revalidate();
+            SP.repaint();
         });
         //кнопка "Окружности"
         ButCircles.addActionListener(e -> {
-            sP.removeAll();
-            sP.add(ButBack);
-            sP.add(ButCircle);
-            sP.add(ButEllipse);
+            SP.removeAll();
+            SP.add(ButBack);
+            SP.add(ButCircle);
+            SP.add(ButEllipse);
             PressedFigureType = "PressedCirclesOrRectangles";
-            sP.revalidate();
-            sP.repaint();
+            SP.revalidate();
+            SP.repaint();
         });
         //кнопка "Четырехугольники"
-        ButQuadrilaterals.addActionListener(e -> {
-            sP.removeAll();
-            sP.add(ButBack);
-            sP.add(ButQuadrilateral);
-            sP.add(ButRectangular);
-            sP.add(ButRhombus);
-            sP.add(ButTrapeze);
+        ButQuadrangles.addActionListener(e -> {
+            SP.removeAll();
+            SP.add(ButBack);
+            SP.add(ButQuadrangle);
+            SP.add(ButRectangle);
+            SP.add(ButRhombus);
+            SP.add(ButTrapeze);
             PressedFigureType = "PressedCirclesOrRectangles";
-            sP.revalidate();
-            sP.repaint();
+            SP.revalidate();
+            SP.repaint();
         });
         //кнопка "Окружность"
         ButCircle.addActionListener(e -> {
-            sP.removeAll();
-            sP.add(ButBack);
-            sP.add(ButCreate);
-            sP.add(ButRemove);
-            sP.add(ButDelete);
-            sP.add(ButChangeRadius);
-            sP.add(ButArray);
+            SP.removeAll();
+            SP.add(ButBack);
+            SP.add(ButCreate);
+            SP.add(ButRemove);
+            SP.add(ButDelete);
+            SP.add(ButChangeRadius);
+            //SP.add(ButArray);
             PressedFigure = "PressedCircle";
             PressedFigureType = "PressedCircles";
-            sP.revalidate();
-            sP.repaint();
+            SP.revalidate();
+            SP.repaint();
         });
         //кнопка "Эллипс"
         ButEllipse.addActionListener(e -> {
-            sP.removeAll();
-            sP.add(ButBack);
-            sP.add(ButCreate);
-            sP.add(ButRemove);
-            sP.add(ButDelete);
-            sP.add(ButRotate);
+            SP.removeAll();
+            SP.add(ButBack);
+            SP.add(ButCreate);
+            SP.add(ButRemove);
+            SP.add(ButDelete);
+            SP.add(ButRotate);
             PressedFigure = "PressedEllipse";
             PressedFigureType = "PressedCircles";
-            sP.revalidate();
-            sP.repaint();
+            SP.revalidate();
+            SP.repaint();
         });
         //кнопка "Четырехугольник"
-        ButQuadrilateral.addActionListener(e -> {
-            sP.removeAll();
-            sP.add(ButBack);
-            sP.add(ButCreate);
-            sP.add(ButRemove);
-            sP.add(ButDelete);
-            sP.add(ButChangeSize);
-            PressedFigure = "PressedQuadrilateral";
+        ButQuadrangle.addActionListener(e -> {
+            SP.removeAll();
+            SP.add(ButBack);
+            SP.add(ButCreate);
+            SP.add(ButRemove);
+            SP.add(ButDelete);
+            SP.add(ButChangeSize);
+            PressedFigure = "PressedQuadrangle";
             PressedFigureType = "PressedRectangles";
-            sP.revalidate();
-            sP.repaint();
+            SP.revalidate();
+            SP.repaint();
         });
         //кнопка "Прямоугольник"
-        ButRectangular.addActionListener(e -> {
-            sP.removeAll();
-            sP.add(ButBack);
-            sP.add(ButCreate);
-            sP.add(ButRemove);
-            sP.add(ButDelete);
-            sP.add(ButChangeSize);
-            sP.add(ButArray);
-            PressedFigure = "PressedRectangular";
+        ButRectangle.addActionListener(e -> {
+            SP.removeAll();
+            SP.add(ButBack);
+            SP.add(ButCreate);
+            SP.add(ButRemove);
+            SP.add(ButDelete);
+            SP.add(ButChangeSize);
+            //SP.add(ButArray);
+            PressedFigure = "PressedRectangle";
             PressedFigureType = "PressedRectangles";
-            sP.revalidate();
-            sP.repaint();
+            SP.revalidate();
+            SP.repaint();
         });
         //кнопка "Ромб"
         ButRhombus.addActionListener(e -> {
-            sP.removeAll();
-            sP.add(ButBack);
-            sP.add(ButCreate);
-            sP.add(ButRemove);
-            sP.add(ButDelete);
-            sP.add(ButChangeSize);
+            SP.removeAll();
+            SP.add(ButBack);
+            SP.add(ButCreate);
+            SP.add(ButRemove);
+            SP.add(ButDelete);
+            SP.add(ButChangeSize);
             PressedFigure = "PressedRhombus";
             PressedFigureType = "PressedRectangles";
-            sP.revalidate();
-            sP.repaint();
+            SP.revalidate();
+            SP.repaint();
         });
         //кнопка "Трапециия"
         ButTrapeze.addActionListener(e -> {
-            sP.removeAll();
-            sP.add(ButBack);
-            sP.add(ButCreate);
-            sP.add(ButRemove);
-            sP.add(ButDelete);
-            sP.add(ButChangeSize);
+            SP.removeAll();
+            SP.add(ButBack);
+            SP.add(ButCreate);
+            SP.add(ButRemove);
+            SP.add(ButDelete);
+            SP.add(ButChangeSize);
             PressedFigure = "PressedTrapeze";
             PressedFigureType = "PressedRectangles";
-            sP.revalidate();
-            sP.repaint();
+            SP.revalidate();
+            SP.repaint();
         });
 
         /*кнопка "Массив"
         ButArray.addActionListener(e -> {
-            sP.removeAll();
-            sP.add(ButBack);
-            sP.add(ButCreate);
-            sP.add(ButRemove);
-            sP.add(ButDelete);
+            SP.removeAll();
+            SP.add(ButBack);
+            SP.add(ButCreate);
+            SP.add(ButRemove);
+            SP.add(ButDelete);
 
             if (PressedFigure.equals("PressedCircle")) {
-                sP.add(ButChangeRadius); numbut = 11; numbut2 = 21;
+                SP.add(ButChangeRadius); numbut = 11; numbut2 = 21;
                 JOptionPane.showMessageDialog(f, "Следующие действия будут выполнены для массива окружностей");
             }
             if (PressedFigure.equals("PressedRectangle")) {
-                sP.add(ButChangeSize); numbut = 14; numbut2 = 24;
+                SP.add(ButChangeSize); numbut = 14; numbut2 = 24;
                 JOptionPane.showMessageDialog(f, "Следующие действия будут выполнены для массива прямоугольников");
             }
-            sP.revalidate();
-            sP.repaint();
+            SP.revalidate();
+            SP.repaint();
         });
         */
 
@@ -244,8 +242,8 @@ public class Canvas {
                     VISION1 = true;
                     circle = new TCircle(ch1, ch2, ch3, Color.BLACK);
                     ((TCircle) circle).Show(VISION1);
-                    cP.add(circle, BorderLayout.CENTER);
-                    cP.revalidate();
+                    CP.add(circle, BorderLayout.CENTER);
+                    CP.revalidate();
                 } else {
                     JOptionPane.showMessageDialog(f, "Окружность уже нарисована");
                 }
@@ -258,14 +256,14 @@ public class Canvas {
                         ch1 = (int) (Math.random() * 300);
                         ch2 = (int) (Math.random() * 300);
                         ch3 = (int) (Math.random() * 300);
-                        circles[i] = new TCircle (ch1, ch2, ch3, Color.GREEN);
+                        circles[i] = new TCircle (ch1, ch2, ch3, Color.BLACK);
                         System.out.println("Circle №" + (i+1) + " координаты центра:: " + ch1 +", "+ ch2 +", диаметр:"+ ch3);
                         circles[i].Show(VISION2);
-                        cP.add(circles[i], BorderLayout.CENTER);
-                        cP.validate();
-                        cP.repaint();
+                        CP.add(circles[i], BorderLayout.CENTER);
+                        CP.validate();
+                        CP.repaint();
                     }
-                    cP.revalidate();
+                    CP.revalidate();
                 }
                 else {
                     JOptionPane.showMessageDialog(f, "Массив Окружностей уже создан");
@@ -279,10 +277,10 @@ public class Canvas {
                     ch3 = (int) (Math.random() * 200);
                     ch4 = (int) (Math.random() * 100);
                     VISION2 = true;
-                    ellipse = new TEllipse(ch1, ch2, ch3, ch4, Color.RED);
+                    ellipse = new TEllipse(ch1, ch2, ch3, ch4, Color.BLACK);
                     ((TEllipse) ellipse).Show(VISION2);
-                    cP.add(ellipse, BorderLayout.CENTER);
-                    cP.revalidate();
+                    CP.add(ellipse, BorderLayout.CENTER);
+                    CP.revalidate();
                 } else {
                     JOptionPane.showMessageDialog(f, "Эллипс уже нарисован");
                 }
@@ -300,8 +298,8 @@ public class Canvas {
                     VISION3 = true;
                     quadrangle = new TQuadrangle(ch1,ch2,ch3,ch4,ch5,ch6,ch7,ch8, Color.BLACK);
                     ((TQuadrangle) quadrangle).Show(VISION3);
-                    cP.add(quadrangle, BorderLayout.CENTER);
-                    cP.revalidate();
+                    CP.add(quadrangle, BorderLayout.CENTER);
+                    CP.revalidate();
                 }
                 else {
                     JOptionPane.showMessageDialog(f, "Четырехугольник уже нарисован");
@@ -314,15 +312,15 @@ public class Canvas {
                     ch3 = 100 + (int) (Math.random() * 500);
                     ch4 = 100 + (int) (Math.random() * 250);
                     VISION4 = true;
-                    rectangle = new TRectangle(ch1, ch2, ch3, ch4, Color.BLUE);
+                    rectangle = new TRectangle(ch1, ch2, ch3, ch4, Color.BLACK);
                     ((TRectangle) rectangle).Show(VISION4);
-                    cP.add(rectangle, BorderLayout.CENTER);
-                    cP.revalidate();
+                    CP.add(rectangle, BorderLayout.CENTER);
+                    CP.revalidate();
                 } else {
                     JOptionPane.showMessageDialog(f, "Прямоугольник уже нарисован");
                 }
             }
-            else if (numbut == 14) {
+            /*else if (numbut == 14) {
                 if (rectangles == null) {
                     rectangles = new TRectangle[10];
                     VISION3 = true;
@@ -331,16 +329,16 @@ public class Canvas {
                         ch2 = (int) (Math.random() * 300);
                         ch3 = (int) (Math.random() * 300);
                         ch4 = (int) (Math.random() * 300);
-                        rectangles[i] = new TRectangle (ch1, ch2, ch3, ch4, Color.RED);
+                        rectangles[i] = new TRectangle (ch1, ch2, ch3, ch4, Color.BLACK);
                         System.out.println("Rectangle №" + (i+1));
                         rectangles[i].Show(VISION3);
-                        cP.add(rectangles[i], BorderLayout.CENTER);
-                        cP.validate();
-                        cP.repaint();
+                        CP.add(rectangles[i], BorderLayout.CENTER);
+                        CP.validate();
+                        CP.repaint();
                     }
-                    cP.revalidate();
+                    CP.revalidate();
                 }
-            }
+            }*/
             else if (PressedFigure.equals("PressedRhombus")) {
                 if (rhombus == null) {
                     ch1 = (int) (Math.random() * 500);
@@ -348,10 +346,10 @@ public class Canvas {
                     ch3 = 100 + (int) (Math.random() * 500);
                     ch4 = 100 + (int) (Math.random() * 250);
                     VISION5 = true;
-                    rhombus = new TRomb(ch1, ch2, ch3, ch4, Color.CYAN);
+                    rhombus = new TRomb(ch1, ch2, ch3, ch4, Color.BLACK);
                     ((TRomb) rhombus).Show(VISION5);
-                    cP.add(rhombus, BorderLayout.CENTER);
-                    cP.revalidate();
+                    CP.add(rhombus, BorderLayout.CENTER);
+                    CP.revalidate();
                 }
                 else {
                     JOptionPane.showMessageDialog(f, "Ромб уже нарисован");
@@ -365,10 +363,10 @@ public class Canvas {
                     ch4 = 100 + (int) (Math.random() * 250);
                     ch5 = 10 + (int) (Math.random() * 50);
                     VISION6 = true;
-                    trapeze = new TTrapeze(ch1, ch2, ch3, ch4, ch5, Color.GREEN);
+                    trapeze = new TTrapeze(ch1, ch2, ch3, ch4, ch5, Color.BLACK);
                     ((TTrapeze) trapeze).Show(VISION6);
-                    cP.add(trapeze, BorderLayout.CENTER);
-                    cP.revalidate();
+                    CP.add(trapeze, BorderLayout.CENTER);
+                    CP.revalidate();
                 }
                 else {
                     JOptionPane.showMessageDialog(f, "Трапеция уже нарисована");
@@ -383,33 +381,33 @@ public class Canvas {
             if (PressedFigure.equals("PressedCircle")) {
                 if (circle != null) {
                     ((TCircle) circle).MoveTo(ch1, ch2);
-                    cP.add(circle, BorderLayout.CENTER);
-                    cP.revalidate();
-                    cP.repaint();
+                    CP.add(circle, BorderLayout.CENTER);
+                    CP.revalidate();
+                    CP.repaint();
                 }
                 else {
                     JOptionPane.showMessageDialog(f, "Окружность не найдена");
                 }
             }
-            else if (numbut == 11) {
+            /*else if (numbut == 11) {
                 if (circles != null) {
                     for (int i=0; i<10; i++) {
                         circles[i].MoveTo(ch1, ch2);
                         circles[i].Show(VISION2);
-                        cP.repaint();
+                        CP.repaint();
                         System.out.println("перемещение Окружности №" + (i+1));
                     }
-                    cP.revalidate();
+                    CP.revalidate();
                 }
                 else {
                     JOptionPane.showMessageDialog(f, "Массив окружностей не найден");
                 }
-            }
+            }*/
             else if (PressedFigure.equals("PressedEllipse")) {
                 if (ellipse  != null) {
                     ((TEllipse) ellipse ).MoveTo(ch1, ch2);
-                    cP.add(ellipse , BorderLayout.CENTER);
-                    cP.repaint();
+                    CP.add(ellipse , BorderLayout.CENTER);
+                    CP.repaint();
                 }
                 else {
                     JOptionPane.showMessageDialog(f, "Эллипс не найден");
@@ -418,8 +416,8 @@ public class Canvas {
             else if (PressedFigure.equals("PressedQuadrangle")) {
                 if (quadrangle != null) {
                     ((TQuadrangle) quadrangle).MoveTo(ch1,ch2);
-                    cP.add(quadrangle, BorderLayout.CENTER);
-                    cP.revalidate();
+                    CP.add(quadrangle, BorderLayout.CENTER);
+                    CP.revalidate();
                 }
                 else {
                     JOptionPane.showMessageDialog(f, "Четырехугольник не найден");
@@ -428,32 +426,32 @@ public class Canvas {
             else if (PressedFigure.equals("PressedRectangle")) {
                 if (rectangle != null) {
                     ((TRectangle) rectangle).MoveTo(ch1, ch2);
-                    cP.add(rectangle, BorderLayout.CENTER);
-                    cP.repaint();
+                    CP.add(rectangle, BorderLayout.CENTER);
+                    CP.repaint();
                 }
                 else {
                     JOptionPane.showMessageDialog(f, "Прямоугольник не найден");
                 }
             }
-            else if (numbut == 14) {
+            /*else if (numbut == 14) {
                 if (rectangles != null) {
                     for (int i=0; i<10; i++) {
                         rectangles[i].MoveTo(ch1, ch2);
                         rectangles[i].Show(VISION3);
-                        cP.repaint();
+                        CP.repaint();
                         System.out.println("перемещение Прямоугольника №" + (i+1));
                     }
-                    cP.revalidate();
+                    CP.revalidate();
                 }
                 else {
                     JOptionPane.showMessageDialog(f, "Массив Прямоугольников не найден");
                 }
-            }
+            }*/
             else if (PressedFigure.equals("PressedRhombus")) {
                 if (rhombus != null) {
                     ((TRomb) rhombus).MoveTo(ch1,ch2);
-                    cP.add(rhombus, BorderLayout.CENTER);
-                    cP.repaint();
+                    CP.add(rhombus, BorderLayout.CENTER);
+                    CP.repaint();
                 }
                 else {
                     JOptionPane.showMessageDialog(f, "Ромб не найден");
@@ -462,8 +460,8 @@ public class Canvas {
             else if (PressedFigure.equals("PressedTrapeze")) {
                 if (trapeze != null) {
                     ((TTrapeze) trapeze).MoveTo(ch1,ch2);
-                    cP.add(trapeze, BorderLayout.CENTER);
-                    cP.repaint();
+                    CP.add(trapeze, BorderLayout.CENTER);
+                    CP.repaint();
                 }
                 else {
                     JOptionPane.showMessageDialog(f, "Трапеция не найдена");
@@ -475,37 +473,37 @@ public class Canvas {
         ButDelete.addActionListener(e -> {
             if (PressedFigure.equals("PressedCircle")) {
                 if (circle != null) {
-                    cP.remove(circle);
+                    CP.remove(circle);
                     ((TCircle) circle).Show(false);
                     circle = null;
-                    cP.revalidate();
-                    cP.repaint();
+                    CP.revalidate();
+                    CP.repaint();
                 }
                 else {
                     JOptionPane.showMessageDialog(f, "Окружность не найдена");
                 }
             }
-            else if (numbut == 11) {
+            /*else if (numbut == 11) {
                 if (circles != null) {
                     for (int i=0; i<10; i++) {
-                        cP.remove(circles[i]);
+                        CP.remove(circles[i]);
                         circles[i].Show(false);
                     }
                     circles = null;
-                    cP.revalidate();
-                    cP.repaint();
+                    CP.revalidate();
+                    CP.repaint();
                 }
                 else {
                     JOptionPane.showMessageDialog(f, "Массив Окружностей не найден");
                 }
-            }
+            }*/
             else if (PressedFigure.equals("PressedEllipse")) {
                 if (ellipse  != null) {
-                    cP.remove(ellipse);
+                    CP.remove(ellipse);
                     ((TEllipse) ellipse ).Show(false);
                     ellipse  = null;
-                    cP.revalidate();
-                    cP.repaint();
+                    CP.revalidate();
+                    CP.repaint();
                 }
                 else {
                     JOptionPane.showMessageDialog(f, "Эллипс не найден");
@@ -513,11 +511,11 @@ public class Canvas {
             }
             else if (PressedFigure.equals("PressedQuadrangle")) {
                 if (quadrangle != null) {
-                    cP.remove(quadrangle);
+                    CP.remove(quadrangle);
                     ((TQuadrangle) quadrangle).Show(false);
                     quadrangle = null;
-                    cP.revalidate();
-                    cP.repaint();
+                    CP.revalidate();
+                    CP.repaint();
                 }
                 else {
                     JOptionPane.showMessageDialog(f, "Четырехугольник не найден");
@@ -525,37 +523,37 @@ public class Canvas {
             }
             else if (PressedFigure.equals("PressedRectangle")) {
                 if (rectangle != null) {
-                    cP.remove(rectangle);
+                    CP.remove(rectangle);
                     ((TRectangle) rectangle).Show(false);
                     rectangle = null;
-                    cP.revalidate();
-                    cP.repaint();
+                    CP.revalidate();
+                    CP.repaint();
                 }
                 else {
                     JOptionPane.showMessageDialog(f, "Прямоугольник не найден");
                 }
             }
-            else if (numbut == 14) {
+            /*else if (numbut == 14) {
                 if (rectangles != null) {
                     for (int i=0; i<10; i++) {
-                        cP.remove(rectangles[i]);
+                        CP.remove(rectangles[i]);
                         rectangles[i].Show(false);
                     }
                     rectangles = null;
-                    cP.revalidate();
-                    cP.repaint();
+                    CP.revalidate();
+                    CP.repaint();
                 }
                 else {
                     JOptionPane.showMessageDialog(f, "Массив Прямоугольников не найден");
                 }
-            }
+            }*/
             else if (PressedFigure.equals("PressedRhombus")) {
                 if (rhombus != null) {
-                    cP.remove(rhombus);
+                    CP.remove(rhombus);
                     ((TRomb) rhombus).Show(false);
                     rhombus = null;
-                    cP.revalidate();
-                    cP.repaint();
+                    CP.revalidate();
+                    CP.repaint();
                 }
                 else {
                     JOptionPane.showMessageDialog(f, "Ромб не найден");
@@ -563,11 +561,11 @@ public class Canvas {
             }
             else if (PressedFigure.equals("PressedTrapeze")) {
                 if (trapeze != null) {
-                    cP.remove(trapeze);
+                    CP.remove(trapeze);
                     ((TTrapeze) trapeze).Show(false);
                     trapeze = null;
-                    cP.revalidate();
-                    cP.repaint();
+                    CP.revalidate();
+                    CP.repaint();
                 }
                 else {
                     JOptionPane.showMessageDialog(f, "Трапеция не найдена");
@@ -583,26 +581,26 @@ public class Canvas {
                 if (circle != null) {
                     ((TCircle) circle).chRad(ch1);
                     ((TCircle) circle).Show(VISION1);
-                    cP.add(circle, BorderLayout.CENTER);
-                    cP.revalidate();
-                    cP.repaint();
+                    CP.add(circle, BorderLayout.CENTER);
+                    CP.revalidate();
+                    CP.repaint();
                 } else {
                     JOptionPane.showMessageDialog(f, "Окружность не найдена");
                 }
             }
-            else if (numbut == 11) {
+            /*else if (numbut == 11) {
                 if (circles != null) {
                     for (int i = 0; i < 10; i++) {
                         ch1 = 50 + (int) (Math.random() * 150);
                         circles[i].chRad(ch1);
                         circles[i].Show(VISION2);
                     }
-                    cP.revalidate();
-                    cP.repaint();
+                    CP.revalidate();
+                    CP.repaint();
                 } else {
                     JOptionPane.showMessageDialog(f, "Массив Окружностей не создан");
                 }
-            }
+            }*/
             ch1 = 0;
         });
         //кнопка "Повернуть на 90"
@@ -610,9 +608,9 @@ public class Canvas {
             if (ellipse  != null) {
                 ((TEllipse) ellipse ).Turn();
                 ((TEllipse) ellipse ).Show(VISION2);
-                cP.add(ellipse , BorderLayout.CENTER);
-                cP.revalidate();
-                cP.repaint();
+                CP.add(ellipse , BorderLayout.CENTER);
+                CP.revalidate();
+                CP.repaint();
             } else {
                 JOptionPane.showMessageDialog(f, "Эллипс не найден");
             }
@@ -625,9 +623,9 @@ public class Canvas {
                 if (quadrangle != null) {
                     ((TQuadrangle) quadrangle).chSize(ch1,ch2);
                     ((TQuadrangle) quadrangle).Show(VISION3);
-                    cP.add(quadrangle, BorderLayout.CENTER);
-                    cP.revalidate();
-                    cP.repaint();
+                    CP.add(quadrangle, BorderLayout.CENTER);
+                    CP.revalidate();
+                    CP.repaint();
                 } else {
                     JOptionPane.showMessageDialog(f, "Четырехугольник не найден");
                 }
@@ -636,32 +634,32 @@ public class Canvas {
                 if (rectangle != null) {
                     ((TRectangle) rectangle).chSize(ch1, ch2);
                     ((TRectangle) rectangle).Show(VISION4);
-                    cP.add(rectangle, BorderLayout.CENTER);
-                    cP.revalidate();
-                    cP.repaint();
+                    CP.add(rectangle, BorderLayout.CENTER);
+                    CP.revalidate();
+                    CP.repaint();
                 } else {
                     JOptionPane.showMessageDialog(f, "Прямоугольник не найден");
                 }
             }
-            else if (numbut == 14) {
+            /*else if (numbut == 14) {
                 if (rectangles != null) {
                     for (int i = 0; i < 10; i++) {
                         rectangles[i].chSize(ch1, ch2);
                         rectangles[i].Show(VISION3);
                     }
-                    cP.revalidate();
-                    cP.repaint();
+                    CP.revalidate();
+                    CP.repaint();
                 } else {
                     JOptionPane.showMessageDialog(f, "Массив Окружностей не создан");
                 }
-            }
+            }*/
             else if (PressedFigure.equals("PressedRhombus")) {
                 if (rhombus != null) {
                     ((TRomb) rhombus).chSize(ch1, ch2);
                     ((TRomb) rhombus).Show(VISION5);
-                    cP.add(rhombus, BorderLayout.CENTER);
-                    cP.revalidate();
-                    cP.repaint();
+                    CP.add(rhombus, BorderLayout.CENTER);
+                    CP.revalidate();
+                    CP.repaint();
                 }
                 else {
                     JOptionPane.showMessageDialog(f, "Ромб не найден");
@@ -671,9 +669,9 @@ public class Canvas {
                 if (trapeze != null) {
                     ((TTrapeze) trapeze).chSize(ch1, ch2);
                     ((TTrapeze) trapeze).Show(VISION6);
-                    cP.add(trapeze, BorderLayout.CENTER);
-                    cP.revalidate();
-                    cP.repaint();
+                    CP.add(trapeze, BorderLayout.CENTER);
+                    CP.revalidate();
+                    CP.repaint();
                 }
                 else {
                     JOptionPane.showMessageDialog(f, "Трапеция не найдена");

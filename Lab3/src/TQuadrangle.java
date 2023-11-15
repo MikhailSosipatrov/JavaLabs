@@ -4,7 +4,7 @@ public class TQuadrangle extends TFigure {
     protected int x2,x3,x4,y2,y3,y4;
     protected int w,h = 0;
     protected Color color;
-    private boolean VISION = true;
+    protected boolean VISION = true;
 
     public TQuadrangle(int x1, int y1, int x2, int y2, int x3, int y3,int x4,int y4, Color color){
         super(x1,y1); //вызов родительского конструктора

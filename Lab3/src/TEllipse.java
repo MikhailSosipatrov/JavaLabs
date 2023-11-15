@@ -15,6 +15,12 @@ public class TEllipse extends TCircle {
         super(x,y);
     }
 
+    public void MoveTo(int x, int y) {
+        super.Set(super.GetX()+x,super.GetY()+y);
+        System.out.println("Новые координаты: x="+ (super.GetX()+x) + "; y=" + (super.GetY()+y));
+        this.repaint();
+    }
+
     public void Turn() {
         int a = r1;
         r1=r2;

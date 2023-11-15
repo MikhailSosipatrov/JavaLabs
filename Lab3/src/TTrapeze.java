@@ -21,4 +21,31 @@ public class TTrapeze extends TQuadrangle {
         x4 -= dx;
     }
 
+    public void MoveTo(int dx, int dy){
+        int x1 = super.GetX()+dx;
+        int y1 = super.GetY()+dy;
+        super.Set(x1,y1);
+        x2 += dx;
+        x3 += dx;
+        x4 += dx;
+        y2 += dy;
+        y3 += dy;
+        y4 += dy;
+        this.repaint();
+    }
+
+    public void paintComponent(Graphics g){
+        super.paintComponent(g);
+        if (VISION == true) {
+            int x1 = super.GetX();
+            int y1 = super.GetY();
+            g.setColor(color);
+            g.drawLine(x1,y1,x2,y2);
+            g.drawLine(x2,y2,x3,y3);
+            g.drawLine(x3,y3,x4,y4);
+            g.drawLine(x4,y4,x1,y1);
+        }
+
+    }
+
 }
