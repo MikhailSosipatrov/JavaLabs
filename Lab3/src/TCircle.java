@@ -7,7 +7,7 @@ public class TCircle extends TFigure {
 
     public TCircle(int x, int y, int r, Color color) {
         super(x,y); //вызов родительского конструктора
-        System.out.println("Координаты центра TCircle: x=" + x + ", y=" + y);
+        //System.out.println("Координаты центра TCircle: x=" + x + ", y=" + y);
         r1 = r2 = r;
         this.color = color;
         System.out.println("Объект TCircle создан");
@@ -17,13 +17,13 @@ public class TCircle extends TFigure {
 
     public void MoveTo(int x, int y) {
         super.Set(super.GetX()+x,super.GetY()+y);
-        System.out.println("Новые координаты: x="+ (super.GetX()+x) + "; y=" + (super.GetY()+y));
+        //System.out.println("Новые координаты: x="+ (super.GetX()+x) + "; y=" + (super.GetY()+y));
         this.repaint();
     }
 
     public void Show(boolean VISION) {
         this.VISION= VISION;
-        setVisible(this.VISION);
+        if (this.VISION == false) this.color = Color.WHITE;
         this.VISION = true;
         this.repaint();
     }

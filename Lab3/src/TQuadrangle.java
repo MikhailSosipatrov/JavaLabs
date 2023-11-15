@@ -37,7 +37,7 @@ public class TQuadrangle extends TFigure {
 
     public void Show(boolean VISION) {
         this.VISION= VISION;
-        setVisible(this.VISION);
+        if (this.VISION == false) this.color = Color.WHITE;
         this.VISION = true;
         this.repaint();
     }

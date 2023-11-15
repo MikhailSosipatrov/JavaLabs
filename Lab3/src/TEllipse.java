@@ -4,7 +4,7 @@ public class TEllipse extends TCircle {
 
     public  TEllipse(int x, int y, int r1, int r2, Color color) {
         super(x,y); //вызов родительского конструктора
-        System.out.println("Координаты центра TEllipse: x=" + x + ", y=" + y);
+        //System.out.println("Координаты центра TEllipse: x=" + x + ", y=" + y);
         this.r1=r1;
         this.r2=r2;
         this.color=color;
@@ -17,7 +17,7 @@ public class TEllipse extends TCircle {
 
     public void MoveTo(int x, int y) {
         super.Set(super.GetX()+x,super.GetY()+y);
-        System.out.println("Новые координаты: x="+ (super.GetX()+x) + "; y=" + (super.GetY()+y));
+        //System.out.println("Новые координаты: x="+ (super.GetX()+x) + "; y=" + (super.GetY()+y));
         this.repaint();
     }
 
