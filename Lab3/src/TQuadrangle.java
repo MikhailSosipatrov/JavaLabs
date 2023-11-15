@@ -43,10 +43,13 @@ public class TQuadrangle extends TFigure {
     }
 
     public void chSize(int dx, int dy) {
-        x2 += dx;
-        x3 = x2;
+        Set(super.GetX()-dx, super.GetY()-dy);
+        x2 -= dx;
+        x3 += dx;
+        x4 += dx;
+        y2 -= dy;
         y3 += dy;
-        y4 = y3;
+        y4 += dy;
         this.repaint();
     }
 

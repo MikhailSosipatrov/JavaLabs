@@ -19,6 +19,7 @@ public class TRectangle extends TQuadrangle {
     public void Show(boolean VISION) {
         this.VISION= VISION;
         if (this.VISION == false) this.color = Color.WHITE;
+        else this.color = Color.black;
         this.VISION = true;
         this.repaint();
     }
@@ -34,18 +35,6 @@ public class TRectangle extends TQuadrangle {
         this.repaint();
     }
 
-    public void MoveTo(int dx, int dy){
-        int x1 = super.GetX()+dx;
-        int y1 = super.GetY()+dy;
-        super.Set(x1,y1);
-        x2 += dx;
-        x3 += dx;
-        x4 += dx;
-        y2 += dy;
-        y3 += dy;
-        y4 += dy;
-        this.repaint();
-    }
 
     public void paintComponent(Graphics g){
         super.paintComponent(g);

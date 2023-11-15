@@ -1,19 +1,17 @@
 import java.awt.*;
 
-public class TRomb extends TQuadrangle {
+public class TTrapeze extends TQuadrangle {
 
-    public TRomb (int x, int y, int w, int h, Color color) {
-        super(x,y); //вызов родительского конструктора
-        x2 = x4 = x + w/2;
-        y2 = y - h/2;
-        x3 = x + w;
-        y3 = y;
-        y4 = y + h/2;
-        this.color=color;
-        System.out.println("Объект TRomb создан");
+    public TTrapeze(int x, int y, int w, int h, int c, Color color) {
+        super(x,y);
+        x2 = x + w; y2 = y;
+        x3 = x2 - c; y3 = y - h;
+        x4 = x + c; y4 = y3;
+        this.color = color;
+        System.out.println("Объект TTrapeze создан");
     }
 
-    public TRomb(int x, int y) { super(x,y);}
+    public TTrapeze(int x, int y) { super(x,y); }
 
     public void chSize(int dx, int dy) {
         Set(super.GetX()-dx, super.GetY()-dy);
@@ -23,28 +21,17 @@ public class TRomb extends TQuadrangle {
         y2 -= dy;
         y3 += dy;
         y4 += dy;
-        this.repaint();
-    }
-
-    public void MoveTo(int dx, int dy){
-        int x1 = super.GetX()+dx;
-        int y1 = super.GetY()+dy;
-        super.Set(x1,y1);
-        x2 -= dx;
-        x3 += dx;
-        x4 += dx;
-        y2 -= dy;
-        y3 += dy;
-        y4 += dy;
-        this.repaint();
     }
 
     public void Show(boolean VISION) {
         this.VISION= VISION;
         if (this.VISION == false) this.color = Color.WHITE;
+        else this.color = Color.black;
         this.VISION = true;
         this.repaint();
     }
+
+
 
     public void paintComponent(Graphics g){
         super.paintComponent(g);
@@ -59,4 +46,5 @@ public class TRomb extends TQuadrangle {
         }
 
     }
+
 }

@@ -1,24 +1,32 @@
 import java.awt.*;
 
-public class TRectangle extends TQuadrangle {
+public class TQuadrangle extends TFigure {
+    protected int w,h = 0;
+    protected Color color;
+    protected boolean VISION = true;
 
-    public TRectangle (int x, int y, int w, int h, Color color) {
-        super(x,y); //вызов родительского конструктора
-        this.w=w;
-        this.h=h;
-        x2 = x3 = x + w;
-        y2 = y;
-        y3 = y4 = y + h;
-        x4 = x;
-        this.color = color;
-        System.out.println("Объект TRectangle создан");
+    public TQuadrangle(int x1, int y1, int x2, int y2, int x3, int y3,int x4,int y4, Color color){
+        super(x1,y1); //вызов родительского конструктора
+        this.x2=x2;
+        this.y2=y2;
+        this.x3=x3;
+        this.y3=y3;
+        this.x4=x4;
+        this.y4=y4;
+        this.color=color;
+        System.out.println("Объект TQuadrangle создан");
     }
 
-    public TRectangle (int x, int y) { super(x,y); }
+    public TQuadrangle(int x1, int y1){
+        super(x1,y1);
+    }
+
+
 
     public void Show(boolean VISION) {
         this.VISION= VISION;
         if (this.VISION == false) this.color = Color.WHITE;
+        else this.color = Color.black;
         this.VISION = true;
         this.repaint();
     }
@@ -29,19 +37,6 @@ public class TRectangle extends TQuadrangle {
         x3 += dx;
         x4 += dx;
         y2 -= dy;
-        y3 += dy;
-        y4 += dy;
-        this.repaint();
-    }
-
-    public void MoveTo(int dx, int dy){
-        int x1 = super.GetX()+dx;
-        int y1 = super.GetY()+dy;
-        super.Set(x1,y1);
-        x2 += dx;
-        x3 += dx;
-        x4 += dx;
-        y2 += dy;
         y3 += dy;
         y4 += dy;
         this.repaint();
@@ -60,5 +55,7 @@ public class TRectangle extends TQuadrangle {
         }
 
     }
+
+
 
 }

@@ -14,11 +14,13 @@ public class TTrapeze extends TQuadrangle {
     public TTrapeze(int x, int y) { super(x,y); }
 
     public void chSize(int dx, int dy) {
-        super.Set(super.GetX()-dx,super.GetY()+dy);
-        x2 += dx;
-        y2 += dy;
+        Set(super.GetX()-dx, super.GetY()-dy);
+        x2 -= dx;
         x3 += dx;
-        x4 -= dx;
+        x4 += dx;
+        y2 -= dy;
+        y3 += dy;
+        y4 += dy;
     }
 
     public void Show(boolean VISION) {
