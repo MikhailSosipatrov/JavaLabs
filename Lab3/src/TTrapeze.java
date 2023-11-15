@@ -21,6 +21,13 @@ public class TTrapeze extends TQuadrangle {
         x4 -= dx;
     }
 
+    public void Show(boolean VISION) {
+        this.VISION= VISION;
+        if (this.VISION == false) this.color = Color.WHITE;
+        this.VISION = true;
+        this.repaint();
+    }
+
     public void MoveTo(int dx, int dy){
         int x1 = super.GetX()+dx;
         int y1 = super.GetY()+dy;

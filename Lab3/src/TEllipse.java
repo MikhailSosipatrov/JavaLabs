@@ -27,6 +27,14 @@ public class TEllipse extends TCircle {
         r2= a;
         this.repaint();
     }
+
+    public void Show(boolean VISION) {
+        this.VISION= VISION;
+        if (this.VISION == false) this.color = Color.WHITE;
+        this.VISION = true;
+        this.repaint();
+    }
+
     public void paintComponent(Graphics g){
         super.paintComponent(g);
         if (VISION == true) {
