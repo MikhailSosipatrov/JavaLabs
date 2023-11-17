@@ -3,7 +3,7 @@ import java.awt.*;
 public class TQuadrangle extends TFigure {
     protected int w,h = 0;
     protected Color color;
-    private boolean VISION = true;
+    protected boolean VISION = true;
 
     public TQuadrangle(int x1, int y1, int x2, int y2, int x3, int y3,int x4,int y4, Color color){
         super(x1,y1);
@@ -30,7 +30,7 @@ public class TQuadrangle extends TFigure {
     }
 
     public void MoveTo(int dx, int dy) {
-        this.Show(false);
+//        this.Show(false);
         x1 = super.GetX() + dx;
         y1 = super.GetY() + dy;
         super.Set(x1, y1);
@@ -40,7 +40,7 @@ public class TQuadrangle extends TFigure {
         y2 += dy;
         y3 += dy;
         y4 += dy;
-        this.Show(true);
+//        this.Show(true);
     }
 
     public void chSize(int dx, int dy) {

@@ -15,6 +15,14 @@ public class TEllipse extends TCircle {
         super(x,y);
     }
 
+    public void Show(boolean VISION) {
+        this.VISION= VISION;
+        if (this.VISION == false) this.color = Color.WHITE;
+        if (this.VISION == true) this.color = Color.BLACK;
+        this.VISION = true;
+        this.repaint();
+    }
+
     public void Turn() {
         a=r1;
         r1=r2;

@@ -3,7 +3,7 @@ import java.awt.*;
 public class TCircle extends TFigure {
     protected int r1, r2;
     protected Color color;
-    private boolean VISION = true;
+    protected boolean VISION = true;
 
     public TCircle(int x, int y, int r, Color color) {
         super(x,y);
@@ -24,11 +24,11 @@ public class TCircle extends TFigure {
 
 
     public void MoveTo(int dx, int dy) {
-        this.Show(false);
+//        this.Show(false);
         x1 = super.GetX() + dx;
         y1 = super.GetY() + dy;
         super.Set(x1, y1);
-        this.Show(true);
+//        this.Show(true);
     }
 
     public void chRad(int r) {
