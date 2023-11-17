@@ -1,13 +1,13 @@
 import java.awt.*;
 
 public class TCircle extends TFigure {
+    //Variables
     protected int r1, r2;
     protected Color color;
     protected boolean VISION = true;
 
     public TCircle(int x, int y, int r, Color color) {
         super(x,y); //вызов родительского конструктора
-        //System.out.println("Координаты центра TCircle: x=" + x + ", y=" + y);
         r1 = r2 = r;
         this.color = color;
         System.out.println("Объект TCircle создан");

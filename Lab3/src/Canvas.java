@@ -2,6 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 
 public class Canvas {
+    //Buttons
 
     private JFrame f = new JFrame();
 
@@ -22,6 +23,7 @@ public class Canvas {
     private JButton ButChangeSize = new JButton("Изменить размер");
     private JButton ButArray = new JButton("Массив");
 
+    //Variables
     private JPanel CP = CenterPanel();
     private JPanel SP = SouthPanel();
     private JPanel circle = null;
@@ -54,6 +56,7 @@ public class Canvas {
 
 
     private JPanel SouthPanel () {
+        //Panel with Buttons
         JPanel p = new JPanel();
         p.setLayout(new GridLayout(5, 1, 10, 10));
         p.setBackground(Color.BLUE);
@@ -82,6 +85,8 @@ public class Canvas {
                 SP.add(ButTrapeze);
                 PressedFigureType = "PressedCirclesOrRectangles";
             }
+
+            //На всякий случай для массива
             /*if (numbut2 == 21) {
                 SP.add(ButBack);
                 SP.add(ButCreate);
@@ -107,6 +112,8 @@ public class Canvas {
             SP.revalidate();
             SP.repaint();
         });
+
+
         //кнопка "Окружности"
         ButCircles.addActionListener(e -> {
             SP.removeAll();
@@ -117,6 +124,8 @@ public class Canvas {
             SP.revalidate();
             SP.repaint();
         });
+
+
         //кнопка "Четырехугольники"
         ButQuadrangles.addActionListener(e -> {
             SP.removeAll();
@@ -129,6 +138,8 @@ public class Canvas {
             SP.revalidate();
             SP.repaint();
         });
+
+
         //кнопка "Окружность"
         ButCircle.addActionListener(e -> {
             SP.removeAll();
@@ -143,6 +154,8 @@ public class Canvas {
             SP.revalidate();
             SP.repaint();
         });
+
+
         //кнопка "Эллипс"
         ButEllipse.addActionListener(e -> {
             SP.removeAll();
@@ -156,6 +169,8 @@ public class Canvas {
             SP.revalidate();
             SP.repaint();
         });
+
+
         //кнопка "Четырехугольник"
         ButQuadrangle.addActionListener(e -> {
             SP.removeAll();
@@ -169,6 +184,8 @@ public class Canvas {
             SP.revalidate();
             SP.repaint();
         });
+
+
         //кнопка "Прямоугольник"
         ButRectangle.addActionListener(e -> {
             SP.removeAll();
@@ -183,6 +200,8 @@ public class Canvas {
             SP.revalidate();
             SP.repaint();
         });
+
+
         //кнопка "Ромб"
         ButRhombus.addActionListener(e -> {
             SP.removeAll();
@@ -196,6 +215,8 @@ public class Canvas {
             SP.revalidate();
             SP.repaint();
         });
+
+
         //кнопка "Трапециия"
         ButTrapeze.addActionListener(e -> {
             SP.removeAll();
@@ -210,6 +231,7 @@ public class Canvas {
             SP.repaint();
         });
 
+        //На всякий случай для массива
         /*кнопка "Массив"
         ButArray.addActionListener(e -> {
             SP.removeAll();
@@ -248,6 +270,8 @@ public class Canvas {
                     JOptionPane.showMessageDialog(f, "Окружность уже нарисована");
                 }
             }
+
+            //На всякий случай для массива
             /*else if (numbut == 11) {
                 if (circles == null) {
                     circles = new TCircle[10];
@@ -270,6 +294,7 @@ public class Canvas {
                 }
             }
              */
+
             else if (PressedFigure.equals("PressedEllipse")) {
                 if (ellipse == null) {
                     ch1 = (int) (Math.random() * 500);
@@ -320,6 +345,8 @@ public class Canvas {
                     JOptionPane.showMessageDialog(f, "Прямоугольник уже нарисован");
                 }
             }
+
+            //На всякий случай для массива
             /*else if (numbut == 14) {
                 if (rectangles == null) {
                     rectangles = new TRectangle[10];
@@ -374,6 +401,8 @@ public class Canvas {
             }
             ch1 = ch2 = ch3 = ch4 = ch5 = ch6 = ch7 = ch8 = 0;
         });
+
+
         //кнопка "Переместить"
         ButRemove.addActionListener(e -> {
             ch1 = -30 + (int) (Math.random() * 100);
@@ -469,6 +498,8 @@ public class Canvas {
             }
             ch1 = ch2 = 0;
         });
+
+
         //кнопка "Удалить"
         ButDelete.addActionListener(e -> {
             if (PressedFigure.equals("PressedCircle")) {
@@ -603,6 +634,9 @@ public class Canvas {
             }*/
             ch1 = 0;
         });
+
+
+
         //кнопка "Повернуть на 90"
         ButRotate.addActionListener(e -> {
             if (ellipse  != null) {
@@ -615,6 +649,8 @@ public class Canvas {
                 JOptionPane.showMessageDialog(f, "Эллипс не найден");
             }
         });
+
+        
         //кнопка "Изменить размер"
         ButChangeSize.addActionListener(e -> {
             ch1 = -25 + (int) (Math.random() * 50);

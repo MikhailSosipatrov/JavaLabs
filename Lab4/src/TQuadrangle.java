@@ -1,6 +1,7 @@
 import java.awt.*;
 
 public class TQuadrangle extends TFigure {
+    //Variables
     protected int w,h = 0;
     protected Color color;
     protected boolean VISION = true;

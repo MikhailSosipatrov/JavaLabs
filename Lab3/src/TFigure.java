@@ -1,6 +1,7 @@
 import javax.swing.*;
 
 abstract class TFigure extends JPanel {
+    //Variables
     private Point TPoint = new Point();
 
     abstract void MoveTo(int x, int y);

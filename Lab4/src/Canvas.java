@@ -2,7 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 
 public class Canvas {
-
+    //Buttons
     private JFrame f = new JFrame();
 
     private JButton ButBack = new JButton("Назад");
@@ -22,6 +22,7 @@ public class Canvas {
     private JButton ButChangeSize = new JButton("Изменить размер");
 //    private JButton ButArray = new JButton("Массив");
 
+    //Variables
     private JPanel CP = CenterPanel();
     private JPanel SP = SouthPanel();
     private JPanel circle = null;
@@ -54,59 +55,16 @@ public class Canvas {
 
 
     private JPanel SouthPanel () {
+        //Panel with buttons
         JPanel p = new JPanel();
         p.setLayout(new GridLayout(5, 1, 10, 10));
         p.setBackground(Color.BLUE);
         p.add(ButCircles);
         p.add(ButQuadrangles);
 
-        //кнопка "Назад"
-        ButBack.addActionListener(e -> {
-            SP.removeAll();
-            if (PressedFigureType.equals("PressedCirclesOrRectangles")) {
-                SP.add(ButCircles);
-                SP.add(ButQuadrangles);
-                PressedFigureType = "NoFigureType";
-            }
-            if (PressedFigureType.equals("PressedCircles")) {
-                SP.add(ButBack);
-                SP.add(ButCircle);
-                SP.add(ButEllipse);
-                PressedFigureType = "PressedCirclesOrRectangles";
-            }
-            if (PressedFigureType.equals("PressedRectangles")) {
-                SP.add(ButBack);
-                SP.add(ButQuadrangle);
-                SP.add(ButRectangle);
-                SP.add(ButRhombus);
-                SP.add(ButTrapeze);
-                PressedFigureType = "PressedCirclesOrRectangles";
-            }
-            /*if (numbut2 == 21) {
-                SP.add(ButBack);
-                SP.add(ButCreate);
-                SP.add(ButRemove);
-                SP.add(ButDelete);
-                SP.add(ButChangeRadius);
-                SP.add(ButArray);
-                PressedFigure = "PressedCircle";
-                PressedFigureType = "PressedCircles";
-            }
-            if (numbut2 == 24) {
-                SP.add(ButBack);
-                SP.add(ButCreate);
-                SP.add(ButRemove);
-                SP.add(ButDelete);
-                SP.add(ButChangeSize);
-                SP.add(ButArray);
-                PressedFigure = "PressedRectangle";
-                PressedFigureType = "PressedRectangles";
-            }
-            */
 
-            SP.revalidate();
-            SP.repaint();
-        });
+
+
         //кнопка "Окружности"
         ButCircles.addActionListener(e -> {
             SP.removeAll();
@@ -209,7 +167,6 @@ public class Canvas {
             SP.revalidate();
             SP.repaint();
         });
-
         /*кнопка "Массив"
         ButArray.addActionListener(e -> {
             SP.removeAll();
@@ -232,6 +189,54 @@ public class Canvas {
         */
 
 
+
+        //кнопка "Назад"
+        ButBack.addActionListener(e -> {
+            SP.removeAll();
+            if (PressedFigureType.equals("PressedCirclesOrRectangles")) {
+                SP.add(ButCircles);
+                SP.add(ButQuadrangles);
+                PressedFigureType = "NoFigureType";
+            }
+            if (PressedFigureType.equals("PressedCircles")) {
+                SP.add(ButBack);
+                SP.add(ButCircle);
+                SP.add(ButEllipse);
+                PressedFigureType = "PressedCirclesOrRectangles";
+            }
+            if (PressedFigureType.equals("PressedRectangles")) {
+                SP.add(ButBack);
+                SP.add(ButQuadrangle);
+                SP.add(ButRectangle);
+                SP.add(ButRhombus);
+                SP.add(ButTrapeze);
+                PressedFigureType = "PressedCirclesOrRectangles";
+            }
+            /*if (numbut2 == 21) {
+                SP.add(ButBack);
+                SP.add(ButCreate);
+                SP.add(ButRemove);
+                SP.add(ButDelete);
+                SP.add(ButChangeRadius);
+                SP.add(ButArray);
+                PressedFigure = "PressedCircle";
+                PressedFigureType = "PressedCircles";
+            }
+            if (numbut2 == 24) {
+                SP.add(ButBack);
+                SP.add(ButCreate);
+                SP.add(ButRemove);
+                SP.add(ButDelete);
+                SP.add(ButChangeSize);
+                SP.add(ButArray);
+                PressedFigure = "PressedRectangle";
+                PressedFigureType = "PressedRectangles";
+            }
+            */
+
+            SP.revalidate();
+            SP.repaint();
+        });
         //кнопка "Создать"
         ButCreate.addActionListener(e -> {
             if (PressedFigure.equals("PressedCircle")) {
@@ -572,8 +577,6 @@ public class Canvas {
                 }
             }
         });
-       
-
         //кнопка "Изменить радиус"
         ButChangeRadius.addActionListener(e -> {
             if (PressedFigure.equals("PressedCircle")) {

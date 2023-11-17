@@ -1,6 +1,7 @@
 import java.awt.*;
 
 public class TCircle extends TFigure {
+    //Variables
     protected int r1, r2;
     protected Color color;
     protected boolean VISION = true;
