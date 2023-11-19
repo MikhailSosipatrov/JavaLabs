@@ -30,10 +30,10 @@ public class TRomb extends TQuadrangle {
         int x1 = super.GetX()+dx;
         int y1 = super.GetY()+dy;
         super.Set(x1,y1);
-        x2 -= dx;
+        x2 += dx;
         x3 += dx;
         x4 += dx;
-        y2 -= dy;
+        y2 += dy;
         y3 += dy;
         y4 += dy;
         this.repaint();

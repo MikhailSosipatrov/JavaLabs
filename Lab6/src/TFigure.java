@@ -2,16 +2,19 @@ import javax.swing.*;
 
 abstract class TFigure extends JPanel {
     private Point TPoint = new Point();
-
-    abstract void MoveTo(int x, int y);
-    abstract void Show(boolean VISION);
+    protected int x1,y1,x2,y2,x3,y3,x4,y4;
 
     public TFigure(int x, int y) {
         TPoint.Set(x,y);
         setLayout(null);
         setOpaque(false);
-        System.out.println("Координаты TFigure инициализированы");
+        System.out.println("Координаты инициализированы");
     }
+
+    public void Show(boolean VISION)
+    {};
+
+    abstract void MoveTo(int dx, int dy);
 
     public void Set(int x, int y) {
         TPoint.Set(x,y);
